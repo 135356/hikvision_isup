@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# custom
+.DS_Store
+*.code-workspace
+.idea
+cmake-build-debug
+cmake-build-release
+build
+cmake
+.vscode/c_cpp_properties.json
