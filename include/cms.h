@@ -1,4 +1,4 @@
-#include "public.h"
+#include "Public.h"
 
 namespace isup{
     long user_id = -1; //设备用户的id
@@ -81,7 +81,7 @@ namespace isup{
     }
 
     //cms监听设备注册
-    int logOn(){
+    int logOnF(){
         //CMS注册模块初始化
         NET_ECMS_Init();
         //日志
@@ -111,6 +111,15 @@ namespace isup{
         }
 
         return 0;
+    }
+    //登出
+    void logOutF(){
+        /* 停止CMS监听服务 */
+        if(!NET_ECMS_StopListen(user_id)){
+            printf("NET_ECMS_StopListen failed, error code: %d\n", NET_ECMS_GetLastError());
+        }
+        //释放被 CMS 占用的资源
+        NET_ECMS_Fini();
     }
 }
 
